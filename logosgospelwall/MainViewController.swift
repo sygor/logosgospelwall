@@ -19,9 +19,8 @@ public class MainViewController : UIViewController {
     public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let destination = segue.destinationViewController as! AVPlayerViewController
-        
-        if let url = NSBundle.mainBundle().pathForResource("Lego", ofType: "mp4") {
-            //destination.player = AVPlayer(URL: url)
+        if let url = NSBundle.mainBundle().URLForResource("Lego", withExtension: "mp4") {
+            destination.player = AVPlayer(URL: url)
         }else  {
             print("No URL")
         }
