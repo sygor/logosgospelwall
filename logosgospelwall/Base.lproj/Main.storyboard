@@ -34,6 +34,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="video1" destination="oTU-0D-RbP" id="2WN-Um-sGz"/>
+                        <outlet property="video2" destination="xE0-dO-MzA" id="Goc-do-9T3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bPM-bn-tex" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

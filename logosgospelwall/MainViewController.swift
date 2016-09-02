@@ -12,6 +12,9 @@ import AVFoundation
 
 public class MainViewController : UIViewController {
     
+    @IBOutlet weak var video1: UIButton!
+    @IBOutlet weak var video2: UIButton!
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -19,10 +22,29 @@ public class MainViewController : UIViewController {
     public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let destination = segue.destinationViewController as! AVPlayerViewController
-        if let url = NSBundle.mainBundle().URLForResource("Lego", withExtension: "mp4") {
-            destination.player = AVPlayer(URL: url)
-        }else  {
-            print("No URL")
+        let buttonPressed = sender as! UIButton
+        
+        destination.player = AVPlayer(URL: retrieveVideoURL(buttonPressed))
+        destination.player?.play()
+        
+    }
+    
+    private func retrieveVideoURL(buttonPressed: UIButton) -> NSURL {
+        
+        switch buttonPressed {
+        case video1:
+            if let url = NSBundle.mainBundle().URLForResource("Lego", withExtension: "mp4") {
+                return url
+            }
+        case video2:
+            if let url = NSBundle.mainBundle().URLForResource("Rabbit", withExtension: "mp4") {
+                return url
+            }
+        default:
+            return NSURL()
         }
+        
+        return NSURL()
+
     }
 }
