@@ -19,14 +19,14 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTU-0D-RbP">
                                 <rect key="frame" x="36" y="198" width="258" height="204"/>
-                                <state key="normal" title="Button" image="brown-rabbit"/>
+                                <state key="normal" image="brown-rabbit"/>
                                 <connections>
                                     <segue destination="c65-XO-cnJ" kind="show" id="d8H-bI-qpg"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xE0-dO-MzA">
                                 <rect key="frame" x="290" y="198" width="258" height="204"/>
-                                <state key="normal" title="Button" image="grey-rabbit"/>
+                                <state key="normal" image="grey-rabbit"/>
                                 <connections>
                                     <segue destination="c65-XO-cnJ" kind="show" id="H0L-uY-pkw"/>
                                 </connections>

@@ -17,6 +17,8 @@ public class MainViewController : UIViewController {
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setBackground(2)
     }
     
     public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -46,5 +48,27 @@ public class MainViewController : UIViewController {
         
         return NSURL()
 
+    }
+    
+    private func setBackground(backgroundIndex: Int) {
+        
+        var backgroundImage:UIImage
+        
+        switch (backgroundIndex) {
+        case 0:
+            backgroundImage = UIImage(imageLiteral: "background1.jpg")
+        case 1:
+            backgroundImage = UIImage(imageLiteral: "background2.jpg")
+        case 2:
+            backgroundImage = UIImage(imageLiteral: "background3.jpg")
+        default:
+            backgroundImage = UIImage(imageLiteral: "background1.jpg")
+        }
+
+        
+        let backgroundImageView = UIImageView(frame:self.view.frame)
+        backgroundImageView.image = backgroundImage
+        
+        self.view.insertSubview(backgroundImageView, atIndex: 0)
     }
 }
