@@ -15,10 +15,36 @@ public class MainViewController : UIViewController {
     @IBOutlet weak var video1: UIButton!
     @IBOutlet weak var video2: UIButton!
     
+    var backgroundImageViewPreload: [UIImageView]!
+    var backgroundImageView: UIImageView!
+    var activeButton: UIButton?
+    
+    @IBAction func ButtonPressed(buttonPressed: UIButton) {
+        
+        if (activeButton == buttonPressed) {
+            // Play Video
+            
+        } else {
+            // Set Background
+            activeButton = buttonPressed
+            switch buttonPressed {
+            case video1:
+                setBackground(0)
+            case video2:
+                setBackground(1)
+            default:
+                setBackground(2)
+            }
+        }
+    }
+    
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        setBackground(2)
+        activeButton = video1
+        
+        backgroundImageViewPreload = createBackgroundImageViewArray()
+        setBackground(0)
     }
     
     public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -26,11 +52,13 @@ public class MainViewController : UIViewController {
         let destination = segue.destinationViewController as! AVPlayerViewController
         let buttonPressed = sender as! UIButton
         
+        // Set the URL of the video and play
         destination.player = AVPlayer(URL: retrieveVideoURL(buttonPressed))
         destination.player?.play()
         
     }
     
+    // Retrieve the Video that the player is about to play
     private func retrieveVideoURL(buttonPressed: UIButton) -> NSURL {
         
         switch buttonPressed {
@@ -52,23 +80,34 @@ public class MainViewController : UIViewController {
     
     private func setBackground(backgroundIndex: Int) {
         
-        var backgroundImage:UIImage
-        
-        switch (backgroundIndex) {
-        case 0:
-            backgroundImage = UIImage(imageLiteral: "background1.jpg")
-        case 1:
-            backgroundImage = UIImage(imageLiteral: "background2.jpg")
-        case 2:
-            backgroundImage = UIImage(imageLiteral: "background3.jpg")
-        default:
-            backgroundImage = UIImage(imageLiteral: "background1.jpg")
+        // Remove existing background
+        if (backgroundImageView != nil) {
+            backgroundImageView.removeFromSuperview()
         }
-
         
-        let backgroundImageView = UIImageView(frame:self.view.frame)
-        backgroundImageView.image = backgroundImage
-        
+        // Fetch preloaded background and switch
+        backgroundImageView = backgroundImageViewPreload[backgroundIndex]
         self.view.insertSubview(backgroundImageView, atIndex: 0)
+        
     }
+
+    // Create background image view
+    private func createBackgroundImageView(backgroundIndex: Int) -> UIImageView {
+        let image = UIImage(imageLiteral: "background" + String(backgroundIndex) + ".jpg")
+        let imageView = UIImageView(frame:self.view.frame)
+        imageView.image = image
+        
+        return imageView
+    }
+    
+    // Create a list of background and store in memory
+    private func createBackgroundImageViewArray() -> [UIImageView]{
+        var backgroundImageViewArray: [UIImageView] = []
+        for i in 0...2 {
+            backgroundImageViewArray.append(createBackgroundImageView(i))
+        }
+        
+        return backgroundImageViewArray
+    }
+
 }

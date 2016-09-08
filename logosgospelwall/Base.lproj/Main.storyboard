@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4XV-No-f8L">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4XV-No-f8L">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -17,18 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTU-0D-RbP">
-                                <rect key="frame" x="36" y="198" width="258" height="204"/>
-                                <state key="normal" image="brown-rabbit"/>
-                                <connections>
-                                    <segue destination="c65-XO-cnJ" kind="show" id="d8H-bI-qpg"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xE0-dO-MzA">
                                 <rect key="frame" x="290" y="198" width="258" height="204"/>
                                 <state key="normal" image="grey-rabbit"/>
                                 <connections>
+                                    <action selector="ButtonPressed:" destination="4XV-No-f8L" eventType="touchUpInside" id="oOg-tE-dXN"/>
                                     <segue destination="c65-XO-cnJ" kind="show" id="H0L-uY-pkw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTU-0D-RbP">
+                                <rect key="frame" x="36" y="198" width="258" height="204"/>
+                                <state key="normal" image="brown-rabbit"/>
+                                <connections>
+                                    <action selector="ButtonPressed:" destination="4XV-No-f8L" eventType="touchUpInside" id="VeL-Wt-u8K"/>
+                                    <segue destination="c65-XO-cnJ" kind="show" id="d8H-bI-qpg"/>
                                 </connections>
                             </button>
                         </subviews>
