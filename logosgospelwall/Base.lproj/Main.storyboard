@@ -35,8 +35,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="video1" destination="oTU-0D-RbP" id="2WN-Um-sGz"/>
-                        <outlet property="video2" destination="xE0-dO-MzA" id="Goc-do-9T3"/>
+                        <outlet property="video0" destination="oTU-0D-RbP" id="Y3M-CY-FRo"/>
+                        <outlet property="video1" destination="xE0-dO-MzA" id="lQ9-US-LGk"/>
                         <segue destination="c65-XO-cnJ" kind="show" identifier="playVideoSegue" id="PL8-TX-ZZg"/>
                     </connections>
                 </viewController>

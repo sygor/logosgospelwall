@@ -12,8 +12,8 @@ import AVFoundation
 
 public class MainViewController : UIViewController {
     
+    @IBOutlet weak var video0: UIButton!
     @IBOutlet weak var video1: UIButton!
-    @IBOutlet weak var video2: UIButton!
     
     var backgroundImageViewPreload: [UIImageView]!
     var backgroundImageView: UIImageView!
@@ -27,9 +27,9 @@ public class MainViewController : UIViewController {
             // Set Background
             activeButton = buttonPressed
             switch buttonPressed {
-            case video1:
+            case video0:
                 setBackground(0)
-            case video2:
+            case video1:
                 setBackground(1)
             default:
                 setBackground(2)
@@ -42,7 +42,7 @@ public class MainViewController : UIViewController {
         
         backgroundImageViewPreload = createBackgroundImageViewArray()
         
-        activeButton = video1
+        activeButton = video0
         setBackground(0)
     }
     
@@ -61,11 +61,11 @@ public class MainViewController : UIViewController {
     private func retrieveVideoURL(buttonPressed: UIButton) -> NSURL {
         
         switch buttonPressed {
-        case video1:
+        case video0:
             if let url = NSBundle.mainBundle().URLForResource("Lego", withExtension: "mp4") {
                 return url
             }
-        case video2:
+        case video1:
             if let url = NSBundle.mainBundle().URLForResource("Rabbit", withExtension: "mp4") {
                 return url
             }
