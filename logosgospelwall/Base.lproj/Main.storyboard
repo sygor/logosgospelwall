@@ -22,7 +22,6 @@
                                 <state key="normal" image="grey-rabbit"/>
                                 <connections>
                                     <action selector="ButtonPressed:" destination="4XV-No-f8L" eventType="touchUpInside" id="oOg-tE-dXN"/>
-                                    <segue destination="c65-XO-cnJ" kind="show" id="H0L-uY-pkw"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTU-0D-RbP">
@@ -30,7 +29,6 @@
                                 <state key="normal" image="brown-rabbit"/>
                                 <connections>
                                     <action selector="ButtonPressed:" destination="4XV-No-f8L" eventType="touchUpInside" id="VeL-Wt-u8K"/>
-                                    <segue destination="c65-XO-cnJ" kind="show" id="d8H-bI-qpg"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -39,6 +37,7 @@
                     <connections>
                         <outlet property="video1" destination="oTU-0D-RbP" id="2WN-Um-sGz"/>
                         <outlet property="video2" destination="xE0-dO-MzA" id="Goc-do-9T3"/>
+                        <segue destination="c65-XO-cnJ" kind="show" identifier="playVideoSegue" id="PL8-TX-ZZg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bPM-bn-tex" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -58,7 +57,4 @@
         <image name="brown-rabbit" width="204" height="204"/>
         <image name="grey-rabbit" width="204" height="204"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="H0L-uY-pkw"/>
-    </inferredMetricsTieBreakers>
 </document>

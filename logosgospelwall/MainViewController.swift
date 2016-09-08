@@ -20,10 +20,9 @@ public class MainViewController : UIViewController {
     var activeButton: UIButton?
     
     @IBAction func ButtonPressed(buttonPressed: UIButton) {
-        
         if (activeButton == buttonPressed) {
             // Play Video
-            
+            self.performSegueWithIdentifier("playVideoSegue", sender: activeButton)
         } else {
             // Set Background
             activeButton = buttonPressed
@@ -41,9 +40,9 @@ public class MainViewController : UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         
-        activeButton = video1
-        
         backgroundImageViewPreload = createBackgroundImageViewArray()
+        
+        activeButton = video1
         setBackground(0)
     }
     
