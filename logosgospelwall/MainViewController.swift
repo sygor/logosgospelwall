@@ -46,6 +46,10 @@ public class MainViewController : UIViewController {
         setBackground(0)
     }
     
+    public override func viewWillLayoutSubviews() {
+        
+    }
+    
     public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         let destination = segue.destinationViewController as! AVPlayerViewController
