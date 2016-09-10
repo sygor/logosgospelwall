@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Main View Controller-->
@@ -17,22 +18,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xE0-dO-MzA">
-                                <rect key="frame" x="290" y="198" width="258" height="204"/>
-                                <state key="normal" image="grey-rabbit"/>
-                                <connections>
-                                    <action selector="ButtonPressed:" destination="4XV-No-f8L" eventType="touchUpInside" id="oOg-tE-dXN"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTU-0D-RbP">
-                                <rect key="frame" x="36" y="198" width="258" height="204"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oTU-0D-RbP">
+                                <rect key="frame" x="40" y="346" width="204" height="204"/>
                                 <state key="normal" image="brown-rabbit"/>
                                 <connections>
                                     <action selector="ButtonPressed:" destination="4XV-No-f8L" eventType="touchUpInside" id="VeL-Wt-u8K"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xE0-dO-MzA">
+                                <rect key="frame" x="356" y="346" width="204" height="204"/>
+                                <state key="normal" image="grey-rabbit"/>
+                                <connections>
+                                    <action selector="ButtonPressed:" destination="4XV-No-f8L" eventType="touchUpInside" id="oOg-tE-dXN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vva-Gr-Mpj" firstAttribute="top" secondItem="oTU-0D-RbP" secondAttribute="bottom" constant="50" id="ZbC-5c-oUn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="xE0-dO-MzA" secondAttribute="trailing" constant="20" id="doI-60-FM8"/>
+                            <constraint firstItem="oTU-0D-RbP" firstAttribute="leading" secondItem="2Yu-UT-Sr0" secondAttribute="leadingMargin" constant="20" id="f5r-wX-AnA"/>
+                            <constraint firstItem="vva-Gr-Mpj" firstAttribute="top" secondItem="xE0-dO-MzA" secondAttribute="bottom" constant="50" id="jd1-L8-ggN"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="video0" destination="oTU-0D-RbP" id="Y3M-CY-FRo"/>
