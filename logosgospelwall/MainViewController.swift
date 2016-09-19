@@ -10,7 +10,7 @@ import UIKit
 import AVKit
 import AVFoundation
 
-public class MainViewController : UIViewController {
+open class MainViewController : UIViewController {
     
     @IBOutlet weak var video0: UIButton!
     @IBOutlet weak var video1: UIButton!
@@ -19,10 +19,10 @@ public class MainViewController : UIViewController {
     var backgroundImageView: UIImageView!
     var activeButton: UIButton?
     
-    @IBAction func ButtonPressed(buttonPressed: UIButton) {
+    @IBAction func ButtonPressed(_ buttonPressed: UIButton) {
         if (activeButton == buttonPressed) {
             // Play Video
-            self.performSegueWithIdentifier("playVideoSegue", sender: activeButton)
+            self.performSegue(withIdentifier: "playVideoSegue", sender: activeButton)
         } else {
             // Set Background
             activeButton = buttonPressed
@@ -37,7 +37,7 @@ public class MainViewController : UIViewController {
         }
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         
         backgroundImageViewPreload = createBackgroundImageViewArray()
@@ -46,42 +46,43 @@ public class MainViewController : UIViewController {
         setBackground(0)
     }
     
-    public override func viewWillLayoutSubviews() {
+    open override func viewWillLayoutSubviews() {
         
     }
     
-    public override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    open override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        let destination = segue.destinationViewController as! AVPlayerViewController
+        let destination = segue.destination as! AVPlayerViewController
         let buttonPressed = sender as! UIButton
         
         // Set the URL of the video and play
-        destination.player = AVPlayer(URL: retrieveVideoURL(buttonPressed))
-        destination.player?.play()
-        
+        if let url = retrieveVideoURL(buttonPressed) {
+            destination.player = AVPlayer(url: url)
+            destination.player?.play()
+        } else {
+            print("Error retrieving video file")
+        }
     }
     
     // Retrieve the Video that the player is about to play
-    private func retrieveVideoURL(buttonPressed: UIButton) -> NSURL {
+    fileprivate func retrieveVideoURL(_ buttonPressed: UIButton) -> URL? {
         
         switch buttonPressed {
         case video0:
-            if let url = NSBundle.mainBundle().URLForResource("Lego", withExtension: "mp4") {
+            if let url = Bundle.main.url(forResource: "Lego", withExtension: "mp4") {
                 return url
             }
         case video1:
-            if let url = NSBundle.mainBundle().URLForResource("Rabbit", withExtension: "mp4") {
+            if let url = Bundle.main.url(forResource: "Rabbit", withExtension: "mp4") {
                 return url
             }
         default:
-            return NSURL()
+            return nil
         }
-        
-        return NSURL()
-
+        return nil
     }
     
-    private func setBackground(backgroundIndex: Int) {
+    fileprivate func setBackground(_ backgroundIndex: Int) {
         
         // Remove existing background
         if (backgroundImageView != nil) {
@@ -90,13 +91,13 @@ public class MainViewController : UIViewController {
         
         // Fetch preloaded background and switch
         backgroundImageView = backgroundImageViewPreload[backgroundIndex]
-        self.view.insertSubview(backgroundImageView, atIndex: 0)
+        self.view.insertSubview(backgroundImageView, at: 0)
         
     }
 
     // Create background image view
-    private func createBackgroundImageView(backgroundIndex: Int) -> UIImageView {
-        let image = UIImage(imageLiteral: "background" + String(backgroundIndex) + ".jpg")
+    fileprivate func createBackgroundImageView(_ backgroundIndex: Int) -> UIImageView {
+        let image = UIImage(imageLiteralResourceName: "background" + String(backgroundIndex) + ".jpg")
         let imageView = UIImageView(frame:self.view.frame)
         imageView.image = image
         
@@ -104,7 +105,7 @@ public class MainViewController : UIViewController {
     }
     
     // Create a list of background and store in memory
-    private func createBackgroundImageViewArray() -> [UIImageView]{
+    fileprivate func createBackgroundImageViewArray() -> [UIImageView]{
         var backgroundImageViewArray: [UIImageView] = []
         for i in 0...2 {
             backgroundImageViewArray.append(createBackgroundImageView(i))

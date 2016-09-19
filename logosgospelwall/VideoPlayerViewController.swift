@@ -9,6 +9,6 @@
 import AVKit
 import AVFoundation
 
-public class VideoPlayerViewController : AVPlayerViewController {
+open class VideoPlayerViewController : AVPlayerViewController {
     
 }
