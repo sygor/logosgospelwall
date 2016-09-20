@@ -84,15 +84,24 @@ open class MainViewController : UIViewController {
     
     fileprivate func setBackground(_ backgroundIndex: Int) {
         
-        // Remove existing background
-        if (backgroundImageView != nil) {
-            backgroundImageView.removeFromSuperview()
-        }
-        
         // Fetch preloaded background and switch
-        backgroundImageView = backgroundImageViewPreload[backgroundIndex]
-        self.view.insertSubview(backgroundImageView, at: 0)
+        let newBackgroundImageView = backgroundImageViewPreload[backgroundIndex]
+        newBackgroundImageView.alpha = 1
+        self.view.insertSubview(newBackgroundImageView, at: 0)
         
+        if (backgroundImageView != nil) {
+        // Animation
+            UIView.animate(withDuration: 0.2, delay: 0, options: UIViewAnimationOptions.transitionCrossDissolve, animations: {() in
+                    self.backgroundImageView.alpha = 0
+                }){(completed) in
+                    // Remove existing background
+                    self.backgroundImageView.removeFromSuperview()
+                    self.backgroundImageView = newBackgroundImageView
+                }
+            
+        } else  {
+            backgroundImageView = newBackgroundImageView
+        }
     }
 
     // Create background image view
